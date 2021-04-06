@@ -1,10 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { ApplicationProvider, Layout, Spinner, Text } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry, Layout, Spinner, Text } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import { DatabaseHelper } from '~/entity/common/DatabaseHelper';
 import RecipeList from '~/screens/RecipeList';
-import AddRecipe from '~/screens/AddRecipe';
+import AddRecipe from '~/screens/AddRecipe/Index';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -18,7 +20,7 @@ const Navigation = () => {
                 options={{headerShown: false}}/>
 			<Stack.Screen 
                 name="AddRecipe" 
-                component={RecipeList} 
+                component={AddRecipe} 
                 options={{headerShown: false}}/>
 		</Stack.Navigator>
 	)
@@ -43,6 +45,8 @@ export default class App extends React.Component<any, any> {
 	render() {
 		this.renderContent()
 		return(
+			<>
+			<IconRegistry icons={EvaIconsPack} />
 			<ApplicationProvider {...eva} theme={eva.light}>
 				<NavigationContainer>
 					{ !this.state.dbOnLoad ? 
@@ -51,6 +55,7 @@ export default class App extends React.Component<any, any> {
 					}	
 				</NavigationContainer>
 			</ApplicationProvider>	
+			</>
 		)
 	}
 }

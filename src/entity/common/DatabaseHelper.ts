@@ -8,7 +8,7 @@ export class DatabaseHelper {
         return createConnection({
             type: 'react-native',
             database: 'test',
-            location: 'default2',
+            location: 'default',
             logging: ['error', 'query', 'schema'],
             synchronize: true,
             entities: [

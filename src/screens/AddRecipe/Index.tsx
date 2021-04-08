@@ -24,15 +24,17 @@ export default class IndexAddRecipe extends React.Component<RecipeListProps, any
     addRecipe() {	
         if (this.state.title == '' || this.state.description == '') {
             return;
-        }	
+        }
+        console.log(this.state)
         this.setState({'createLoading': true});
         const recipe = new Recipe();
 		recipe.title = this.state.title,
-		recipe.description = this.state.desciption;
+		recipe.description = this.state.description;
 		recipe.how_many = 1
         const {navigate} = this.props.navigation;
 		this.recipeRepository.repository.save(recipe)
-        return navigate('Home');
+        this.setState({'createLoading': false});
+        return navigate('Home', {'needReload': true});
 	}
     validateBtnText() {
         return (

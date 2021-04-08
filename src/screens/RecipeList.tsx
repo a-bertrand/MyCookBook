@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import {Recipe} from "~/entity/Recipe/Recipe";
 import RecipeRepository from "~/entity/Recipe/RecipeRepository";
-
+import { useFocusEffect } from '@react-navigation/native';
 
 interface RecipeListProps {
     navigation: any
@@ -13,7 +13,7 @@ interface RecipeListState {
 	text: string,
 	recipes: Recipe[],
 	visibleDetailRecipe: boolean,
-	needReload: boolean
+	alreadyUpdate: boolean
 }
 
 export default class RecipeList extends React.Component<RecipeListProps, RecipeListState> {
@@ -28,30 +28,27 @@ export default class RecipeList extends React.Component<RecipeListProps, RecipeL
 			onLoad: false,
 			recipes : new Array<Recipe>(),
 			visibleDetailRecipe: false,
-			needReload: false,
+			alreadyUpdate: false
 		}
+		
 	}
 	componentDidMount() {
-		this.updateRecipes();
-	}
-	componentWillUnmount() {
-		this.setState({'needReload': true})
-	}
-	async checkNeedReload() {
-		this.setState({'needReload': false})
-		if(this.state.needReload) {
-			await this.updateRecipes();
-		}
-	}
-	async updateRecipes() {
-		this.setState({'recipes': await this.recipeRepository.GetAll()})
+		const  navigation  = this.props.navigation;
+		navigation.addListener('focus', () => console.log('Screen was focused')),
+		navigation.addListener('blur', () => console.log('Screen was unfocused'))
+		this.updateRecipes()
+	}	
+	updateRecipes() {
+		this.setState({'alreadyUpdate': true, 'onLoad': true})
+		this.recipeRepository.GetAll().then((recipes) => {
+			this.setState({'recipes': recipes, 'onLoad': false})
+		})
 	}
 	render() {
-		const { navigate } = this.props.navigation;
+		const  {navigate}  = this.props.navigation;
 		const renderItem = ({item, index}) => (
 			<Text> {item.title} </Text>
         );
-		this.checkNeedReload();
         return (
 			<Layout style={styles.listContainer}>
 				<Text>Liste </Text>

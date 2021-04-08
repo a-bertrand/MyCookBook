@@ -10,7 +10,6 @@
    "entities": [
       "src/entity/**/*.ts"
    ],
-   "keepConnectionAlive": true,
    "migrations": [
       "src/migration/**/*.ts"
    ],

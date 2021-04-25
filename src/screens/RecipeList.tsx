@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import {Recipe} from "~/entity/Recipe/Recipe";
 import RecipeRepository from "~/entity/Recipe/RecipeRepository";
-import { useFocusEffect } from '@react-navigation/native';
+
 
 interface RecipeListProps {
     navigation: any
@@ -30,12 +30,18 @@ export default class RecipeList extends React.Component<RecipeListProps, RecipeL
 			visibleDetailRecipe: false,
 			alreadyUpdate: false
 		}
-		
+	}
+	clean() {
+		this.recipeRepository.repository.find().then((recipes) => {
+			recipes.forEach(recipe => {
+				this.recipeRepository.repository.delete(recipe.id)
+			});
+		});
 	}
 	componentDidMount() {
+		this.clean()
 		const  navigation  = this.props.navigation;
-		navigation.addListener('focus', () => console.log('Screen was focused')),
-		navigation.addListener('blur', () => console.log('Screen was unfocused'))
+		navigation.addListener('focus', () => this.updateRecipes()),
 		this.updateRecipes()
 	}	
 	updateRecipes() {

@@ -1,6 +1,6 @@
 import { Connection, createConnection } from 'typeorm/browser';
 import { Image, Recipe, Step } from '../Index';
-
+import Ingredient from '../Ingredient/Ingredient';
 
 
 export class DatabaseHelper {
@@ -12,9 +12,10 @@ export class DatabaseHelper {
             logging: ['error', 'query', 'schema'],
             synchronize: true,
             entities: [
-                Recipe,
+                Ingredient,
                 Step,
-                Image
+                Image,
+                Recipe
             ]
         });
    }

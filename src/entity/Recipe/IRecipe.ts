@@ -1,6 +1,8 @@
 import { ICoreEntity } from "../common/ICoreEntity";
 import { IImage } from "../Image/IImage";
+import { IIngredient } from "../Ingredient/IIngredient";
 import { IStep } from "../Step/IStep";
+
 
 export interface IRecipe extends ICoreEntity {
     title: string;
@@ -8,5 +10,6 @@ export interface IRecipe extends ICoreEntity {
     steps: IStep[]
     how_many: number;
     images: IImage[];
+    ingredients: IIngredient[];
 }
 

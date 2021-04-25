@@ -9,7 +9,6 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useFocusEffect } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 const Navigation = () => {
@@ -21,8 +20,7 @@ const Navigation = () => {
                 options={{headerShown: false}}/>
 			<Stack.Screen 
                 name="AddRecipe" 
-                component={AddRecipe} 
-                options={{headerShown: false}}/>
+                component={AddRecipe} />
 		</Stack.Navigator>
 	)
 }
@@ -46,7 +44,6 @@ export default class App extends React.Component<any, any> {
 		
 	}
 	render() {
-		console.log(this.state.dbOnLoad)
 		return(
 			<>
 				<IconRegistry icons={EvaIconsPack} />

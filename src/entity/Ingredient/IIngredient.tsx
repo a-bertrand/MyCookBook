@@ -1,8 +1,9 @@
 import { ICoreEntity } from "../common/ICoreEntity";
 import { IRecipe } from "../Recipe/IRecipe";
 
-export interface IStep extends ICoreEntity {
-    number: number;
-    description: string;
+export interface IIngredient extends ICoreEntity {
+    name: string;
+    measure_type: string;
+    quantity: number;
     recipe: IRecipe;
 }

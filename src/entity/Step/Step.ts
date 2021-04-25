@@ -10,7 +10,7 @@ export class Step extends CoreEntity implements IStep {
     number: number;
 
     @Column()
-    description: number;
+    description: string;
 
     @OneToMany('Recipe', 'steps')
     recipe: Recipe

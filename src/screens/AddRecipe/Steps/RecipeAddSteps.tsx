@@ -6,13 +6,13 @@ import { Recipe, Step } from '~/entity/Index';
 import { DescriptionStep } from './DescriptionStep';
 import { IngredientsStep } from './IngredientsStep';
 import { StepsDetailsStep } from './StepsDetails';
-
+import { ImagesStep } from './ImagesStep';
 
 enum ScreeenSteps {
     DescriptionStep,
     StepsDetail,
     IngredientsDetail,
-    PicturesStep,
+    ImagesStep,
     SummaryStep
 }
 interface StepProps {}
@@ -41,7 +41,7 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
             nextStep = ScreeenSteps.StepsDetail
         }
         else if (currentStep === ScreeenSteps.StepsDetail) {
-            nextStep = ScreeenSteps.PicturesStep
+            nextStep = ScreeenSteps.ImagesStep
         }
 
         this.setState({'currentStep': nextStep});
@@ -56,7 +56,7 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
         else if (this.state.currentStep === ScreeenSteps.StepsDetail) {
             previousStep = ScreeenSteps.IngredientsDetail
         }
-        else if (currentStep === ScreeenSteps.PicturesStep) {
+        else if (currentStep === ScreeenSteps.ImagesStep) {
             previousStep = ScreeenSteps.StepsDetail
         }
 
@@ -88,6 +88,14 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
         else if (currentStep === ScreeenSteps.StepsDetail) {
             currrentStepcomp = (
                 <StepsDetailsStep 
+                    recipe={this.state.recipe}
+                    updateRecipe={this.updateRecipe.bind(this)} 
+                />
+            )
+        }
+        else if (currentStep === ScreeenSteps.ImagesStep) {
+            currrentStepcomp = (
+                <ImagesStep 
                     recipe={this.state.recipe}
                     updateRecipe={this.updateRecipe.bind(this)} 
                 />

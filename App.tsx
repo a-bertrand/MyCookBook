@@ -20,7 +20,8 @@ const Navigation = () => {
                 options={{headerShown: false}}/>
 			<Stack.Screen 
                 name="AddRecipe" 
-                component={AddRecipe} />
+                component={AddRecipe} 
+				options={{title:"Ajout d'une recette"}}/>
 		</Stack.Navigator>
 	)
 }

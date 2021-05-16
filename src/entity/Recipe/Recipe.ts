@@ -16,13 +16,10 @@ export class Recipe extends CoreEntity {
     @Column({nullable: true})
     how_many: number;
 
-    @ManyToOne('Step', 'recipe')
     steps: IStep[];
 
-    @ManyToOne('Image', 'recipe')
     images: IImage[];
 
-    @ManyToOne('Ingredient', 'recipe')
     ingredients: IIngredient[];
 
     static Create(): Recipe {
@@ -30,6 +27,7 @@ export class Recipe extends CoreEntity {
         recipe.steps = new Array<IStep>();
         recipe.images = new Array<IImage>();
         recipe.ingredients = new Array<IIngredient>();
+        recipe.how_many = 0;
         return recipe
     }
 

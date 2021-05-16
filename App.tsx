@@ -21,7 +21,7 @@ const Navigation = () => {
 			<Stack.Screen 
                 name="AddRecipe" 
                 component={AddRecipe} 
-				options={{title:"Ajout d'une recette"}}/>
+				options={{title:"Ajout d'une recette", headerShown: false}}/>
 		</Stack.Navigator>
 	)
 }

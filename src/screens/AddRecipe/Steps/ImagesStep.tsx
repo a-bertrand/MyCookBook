@@ -1,10 +1,9 @@
-import PictureBtn from './utils/BtnAddPicture'
+import PictureBtn from './components/BtnAddPicture'
 import React from 'react';
 import { ImagePickerResponse } from 'react-native-image-picker';
 import { Layout } from '@ui-kitten/components';
-import { StepProps } from './utils/RecipeAddStep';
+import { StepProps } from './components/RecipeAddStep';
 import { Image } from '~/entity/Index';
-import { v4 as uuidv4 } from 'uuid';
 
 
 export class ImagesStep extends React.Component<StepProps, any> {
@@ -18,7 +17,6 @@ export class ImagesStep extends React.Component<StepProps, any> {
     render() {
         return (
             <Layout>
-                <PictureBtn addImage={this.addImage.bind(this)}/>
                 <PictureBtn addImage={this.addImage.bind(this)}/>
             </Layout>
         )

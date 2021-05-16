@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, TouchableHighlight } from "react-native";
 import { Recipe } from "~/entity/Recipe/Recipe";
 import RecipeRepository from "~/entity/Recipe/RecipeRepository";
-import { RecipeAddSteps } from "./Steps/RecipeAddSteps";
+import { RecipeAddSteps } from "./Steps/index";
 
 enum ScreeenSteps {
     DescriptionStep,

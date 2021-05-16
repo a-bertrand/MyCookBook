@@ -16,7 +16,7 @@ export default class RecipeDetail extends React.Component<any, State> {
 	constructor(props: any){
 		super(props)
 		this.state = {
-			recipe : null
+			recipe : this.props.recipe
 		}
 	}
 	Capitalize (str: String){
@@ -32,6 +32,7 @@ export default class RecipeDetail extends React.Component<any, State> {
 	}
 	render() {
 		const recipe = this.state.recipe;
+		console.log('summary recipe', recipe)
 		const imageUrl = 'data:image/png;base64,'+recipe.images[0].content
 		return (
 			<ScrollView style={{flex:1, width:'100%'}} scrollIndicatorInsets={{ right: 1 }}>

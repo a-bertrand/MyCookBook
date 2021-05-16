@@ -2,9 +2,9 @@ import { Icon, Input } from "@ui-kitten/components";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
-import Ingredient from "~/entity/Ingredient/Ingredient";
-import { StepProps } from "./utils/RecipeAddStep";
-import { AddIngredient } from "./utils/RenderIngredientInput";
+import { Ingredient } from "~/entity/Ingredient/Ingredient";
+import { StepProps } from "./components/RecipeAddStep";
+import { AddIngredient } from "./components/RenderIngredientInput";
 
 
 interface StepsDetailsStepState {
@@ -21,7 +21,6 @@ export class IngredientsStep extends React.Component<StepProps, StepsDetailsStep
     }
     addStep() {
         let ingredients = this.state.ingredients;
-
         let newIngredient = new Ingredient()
         newIngredient.quantity = 0;
         ingredients.push(newIngredient);
@@ -38,10 +37,6 @@ export class IngredientsStep extends React.Component<StepProps, StepsDetailsStep
         return (
             <>
                 <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text>Pour combien de personne: </Text>
-                        <Input keyboardType="numeric"/>
-                    </View>
                     <View style={{flexDirection: 'row'}}>
                         <Text>Ingredients: </Text>
                         <TouchableHighlight onPress={this.reduceStep.bind(this)}>

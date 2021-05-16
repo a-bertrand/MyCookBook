@@ -1,6 +1,6 @@
 import { Connection, createConnection } from 'typeorm/browser';
 import { Image, Recipe, Step } from '../Index';
-import Ingredient from '../Ingredient/Ingredient';
+import { Ingredient } from '../Ingredient/Ingredient';
 
 
 export class DatabaseHelper {

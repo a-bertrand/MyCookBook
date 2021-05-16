@@ -3,8 +3,8 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { Step } from "~/entity/Index";
-import { StepProps } from "./utils/RecipeAddStep";
-import { AddStep } from "./utils/RenderStepInput";
+import { StepProps } from "./components/RecipeAddStep";
+import { AddStep } from "./components/RenderStepInput";
 
 interface StepsDetailsStepState {
     'steps': Step[]

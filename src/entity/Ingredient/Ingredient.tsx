@@ -5,7 +5,7 @@ import { IIngredient } from "./IIngredient";
 
 
 @Entity()
-export default class Ingredient extends CoreEntity implements IIngredient  {
+export class Ingredient extends CoreEntity implements IIngredient  {
     @Column({nullable: true})
     description: string;
 

@@ -32,4 +32,16 @@ export class Recipe extends CoreEntity {
         recipe.ingredients = new Array<IIngredient>();
         return recipe
     }
+
+    public resize_recipe(newHowMany: number): void{
+        if(this.how_many) {
+            this.ingredients.forEach(
+                (ingredient: IIngredient) => {
+                    let newQuantity = ingredient.quantity * newHowMany / this.how_many
+                    ingredient.quantity = newQuantity.toFixed(1)
+                }
+            );
+        }
+        this.how_many = newHowMany
+    }
 }

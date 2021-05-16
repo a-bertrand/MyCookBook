@@ -1,6 +1,6 @@
 import { Column } from "typeorm/browser";
 import { CoreEntity } from "./common/CoreEntity";
-import { IEntity } from "./common/IEntity";
+
 
 export default class Category extends CoreEntity {
     @Column({length: 100})

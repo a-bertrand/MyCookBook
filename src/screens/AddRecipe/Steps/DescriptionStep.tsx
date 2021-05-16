@@ -37,6 +37,18 @@ export class DescriptionStep extends RecipeAddStep {
                     }}
                     style={CustomStyles.inputForm}
                 />
+                <Input
+                    label='Pour combien de personne'
+                    multiline={true}
+                    keyboardType='number-pad'
+                    textStyle={{ minHeight: 64 }}
+                    value={recipe.how_many.toString()}
+                    onChangeText={(nextValue) => {
+                        recipe.how_many = parseInt(nextValue); 
+                        updateRecipe(recipe)
+                    }}
+                    style={CustomStyles.inputForm}
+                />
             </>
         )
     }

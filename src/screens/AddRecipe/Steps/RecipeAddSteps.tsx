@@ -7,6 +7,8 @@ import { DescriptionStep } from './DescriptionStep';
 import { IngredientsStep } from './IngredientsStep';
 import { StepsDetailsStep } from './StepsDetails';
 import { ImagesStep } from './ImagesStep';
+import { SummaryStep } from './SummaryStep';
+
 
 enum ScreeenSteps {
     DescriptionStep,
@@ -43,6 +45,9 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
         else if (currentStep === ScreeenSteps.StepsDetail) {
             nextStep = ScreeenSteps.ImagesStep
         }
+        else if (currentStep === ScreeenSteps.ImagesStep) {
+            nextStep = ScreeenSteps.SummaryStep
+        }
 
         this.setState({'currentStep': nextStep});
     }
@@ -58,6 +63,9 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
         }
         else if (currentStep === ScreeenSteps.ImagesStep) {
             previousStep = ScreeenSteps.StepsDetail
+        }
+        else if (currentStep === ScreeenSteps.SummaryStep) {
+            previousStep = ScreeenSteps.ImagesStep
         }
 
         this.setState({'currentStep': previousStep});
@@ -101,8 +109,13 @@ export class RecipeAddSteps extends React.Component<StepProps, StepState> {
                 />
             )
         }
-        else {
-            return (<Text>TO DODO</Text>)
+        else if (currentStep === ScreeenSteps.SummaryStep) {
+            currrentStepcomp = (
+                <SummaryStep 
+                    recipe={this.state.recipe}
+                    updateRecipe={this.updateRecipe.bind(this)} 
+                />
+            )
         }
         return currrentStepcomp
     }

@@ -6,6 +6,7 @@ import Ingredient from "~/entity/Ingredient/Ingredient";
 import { StepProps } from "./utils/RecipeAddStep";
 import { AddIngredient } from "./utils/RenderIngredientInput";
 
+
 interface StepsDetailsStepState {
     'ingredients': Ingredient[]
 }
